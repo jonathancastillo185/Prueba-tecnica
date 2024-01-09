@@ -31,27 +31,27 @@ try:
     dropdown.click()
 
     # Selecciona la opción 'Victims' dentro del primer dropdown
-    option_victims = WebDriverWait(driver, 2).until(
+    option_victims = WebDriverWait(driver, 4).until(
         EC.element_to_be_clickable((By.XPATH, "//nb-option[contains(text(), 'Victims')]"))
     )
     option_victims.click()
 
     # El ano 2022 viene seleccionado por defecto, por esa razon, no se lo selecciona por medio de funciones.
 
-    # Espera un máximo de 3 segundos para encontrar y hacer clic en el segundo dropdown
-    dropdown_2 = WebDriverWait(driver, 3).until(
+    # Espera un máximo de 4 segundos para encontrar y hacer clic en el segundo dropdown
+    dropdown_2 = WebDriverWait(driver, 4).until(
         EC.element_to_be_clickable((By.XPATH, "//nb-select[@id='dwnnibrsloc-select']"))
     )
     dropdown_2.click()
 
     # Encuentra y haz clic en la opción "Florida" en el segundo menú desplegable
-    option_florida = WebDriverWait(driver, 2).until(
+    option_florida = WebDriverWait(driver, 4).until(
         EC.element_to_be_clickable((By.XPATH, "//nb-option[contains(text(), 'Florida')]"))
     )
     option_florida.click()
 
-    # Espera un máximo de 3 segundos para encontrar y hacer clic en el botón de descarga
-    WebDriverWait(driver, 3).until(
+    # Espera un máximo de 4 segundos para encontrar y hacer clic en el botón de descarga
+    WebDriverWait(driver, 4).until(
         EC.element_to_be_clickable((By.ID, 'nibrs-download-button'))
     ).click()
 
@@ -159,8 +159,11 @@ Crimes_Against_Property = Crimes_Against_Property.rename_axis('Age')
 # Guarda el DataFrame 'Crimes_Against_Property' como un archivo CSV llamado 'Crimes_Against_Property.csv'
 Crimes_Against_Property.to_csv('Crimes_Against_Property.csv')
 
-if os.path.exists('Victims_Age_by_Offense_Category_2022.xlsx'):
-    os.remove('Victims_Age_by_Offense_Category_2022.xlsx')
+
+# Descomentar las lineas siguientes si requiere eliminar el archivo descomprimido original
+
+#if os.path.exists('Victims_Age_by_Offense_Category_2022.xlsx'):
+#    os.remove('Victims_Age_by_Offense_Category_2022.xlsx')
 
 print('El archivo resultante tiene el nombre de "Crimes_Against_Property.csv"')
 
