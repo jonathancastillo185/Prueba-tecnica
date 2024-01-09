@@ -23,7 +23,6 @@ try:
     WebDriverWait(driver, 6).until(
         EC.element_to_be_clickable((By.ID, 'home-dwnload-go-btn'))
     ).click()
-    print("Se hizo clic en el botón 'Go'")
 
     # Espera un máximo de 4 segundos para encontrar y hacer clic en el primer dropdown
     dropdown = WebDriverWait(driver, 4).until(
@@ -57,7 +56,9 @@ try:
     ).click()
 
     time.sleep(5)  # Espera 5 segundos para permitir la descarga
-
+    
+    print('Se descargo el archivo')
+    
 except Exception as e:
     print("No se pudo realizar la selección:", e)
 
@@ -107,6 +108,8 @@ with zipfile.ZipFile(archivos_encontrados[0], 'r') as archivo_zip:
     # Extraer archivo
     archivo_zip.extract('Victims_Age_by_Offense_Category_2022.xlsx')
     
+print('Se descomprimio el archivo')
+
 
 # -------------------------------------------------- ETL (extraccion, transformacion y carga) --------------------------------------------------
 
@@ -155,6 +158,11 @@ Crimes_Against_Property = Crimes_Against_Property.rename_axis('Age')
 
 # Guarda el DataFrame 'Crimes_Against_Property' como un archivo CSV llamado 'Crimes_Against_Property.csv'
 Crimes_Against_Property.to_csv('Crimes_Against_Property.csv')
+
+if os.path.exists('Victims_Age_by_Offense_Category_2022.xlsx'):
+    os.remove('Victims_Age_by_Offense_Category_2022.xlsx')
+
+print('El archivo resultante tiene el nombre de "Crimes_Against_Property.csv"')
 
 
 # -------------------------------------------------- Fin del proceso --------------------------------------------------
