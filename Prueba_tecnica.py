@@ -160,10 +160,10 @@ Crimes_Against_Property = Crimes_Against_Property.rename_axis('Age')
 Crimes_Against_Property.to_csv('Crimes_Against_Property.csv')
 
 
-# Descomentar las lineas siguientes si requiere eliminar el archivo descomprimido original
+# Comentar las lineas siguientes si requiere no eliminar el archivo descomprimido original
 
-#if os.path.exists('Victims_Age_by_Offense_Category_2022.xlsx'):
-#    os.remove('Victims_Age_by_Offense_Category_2022.xlsx')
+if os.path.exists('Victims_Age_by_Offense_Category_2022.xlsx'):
+    os.remove('Victims_Age_by_Offense_Category_2022.xlsx')
 
 print('El archivo resultante tiene el nombre de "Crimes_Against_Property.csv"')
 
