@@ -149,7 +149,7 @@ Crimes_Against_Property = Crimes_Against_Property.transpose()
 
 # Elimina la primera fila del DataFrame 'Crimes_Against_Property'
 Crimes_Against_Property.drop(Crimes_Against_Property.index[0], inplace=True)
-
+1
 # Renombra las columnas del DataFrame 'Crimes_Against_Property' como 'Crimes Against Property'
 Crimes_Against_Property.columns = ['Crimes Against Property']
 
@@ -162,8 +162,8 @@ Crimes_Against_Property.to_csv('Crimes_Against_Property.csv')
 
 # Comentar las lineas siguientes si requiere no eliminar el archivo descomprimido original
 
-if os.path.exists('Victims_Age_by_Offense_Category_2022.xlsx'):
-    os.remove('Victims_Age_by_Offense_Category_2022.xlsx')
+#if os.path.exists('Victims_Age_by_Offense_Category_2022.xlsx'):
+#   os.remove('Victims_Age_by_Offense_Category_2022.xlsx')
 
 print('El archivo resultante tiene el nombre de "Crimes_Against_Property.csv"')
 
